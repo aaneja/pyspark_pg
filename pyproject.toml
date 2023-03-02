@@ -6,8 +6,8 @@ authors = ["Anant Aneja <anant@ahana.io>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pyspark = {extras = ["sql"], version = "^3.3.2"}
-delta-spark = "^2.2.0"
+pyspark = {extras = ["sql"], version = "^3.2.0"}
+delta-spark = "^1.2.1"
 
 [tool.poetry.dev-dependencies]
 

@@ -15,6 +15,9 @@ table_name = "tableParquet"
 spark.sql("ANALYZE TABLE %s COMPUTE STATISTICS FOR ALL COLUMNS" % table_name).show()
 spark.sql("DESC EXTENDED %s a" % table_name).show()
 spark.sql("DESC EXTENDED %s b" % table_name).show()
+spark.sql("DESC EXTENDED %s c" % table_name).show()
+spark.sql("DESC EXTENDED %s d" % table_name).show()
+spark.sql("DESC EXTENDED %s e" % table_name).show()
 
 ## tableDelta : Delta is a 'v2' table and ANALYZE on it is only supported with the Databricks Runtime 8.3 and above
 # pyspark.sql.utils.AnalysisException: ANALYZE TABLE is not supported for v2 tables.
@@ -134,9 +137,57 @@ spark.sql("DESC EXTENDED %s b" % table_name).show()
 # |   max_col_len|         8|
 # |     histogram|      NULL|
 # +--------------+----------+
+#
+# +--------------+----------+
+# |     info_name|info_value|
+# +--------------+----------+
+# |      col_name|         c|
+# |     data_type|    string|
+# |       comment|      NULL|
+# |           min|      NULL|
+# |           max|      NULL|
+# |     num_nulls|         0|
+# |distinct_count|         3|
+# |   avg_col_len|         7|
+# |   max_col_len|         7|
+# |     histogram|      NULL|
+# +--------------+----------+
+#
+# +--------------+----------+
+# |     info_name|info_value|
+# +--------------+----------+
+# |      col_name|         d|
+# |     data_type|      date|
+# |       comment|      NULL|
+# |           min|2000-01-01|
+# |           max|2000-03-01|
+# |     num_nulls|         0|
+# |distinct_count|         3|
+# |   avg_col_len|         4|
+# |   max_col_len|         4|
+# |     histogram|      NULL|
+# +--------------+----------+
+#
+# +--------------+--------------------+
+# |     info_name|          info_value|
+# +--------------+--------------------+
+# |      col_name|                   e|
+# |     data_type|           timestamp|
+# |       comment|                NULL|
+# |           min|2000-01-01 06:30:...|
+# |           max|2000-01-03 06:30:...|
+# |     num_nulls|                   0|
+# |distinct_count|                   3|
+# |   avg_col_len|                   8|
+# |   max_col_len|                   8|
+# |     histogram|                NULL|
+# +--------------+--------------------+
 
 
 ### Other commands
 # df = spark.read.format("delta").load("spark-warehouse/tablea")
 # spark.sql("SELECT count(*) from tableA").show()
 # spark.sql("DROP TABLE tableA").show()
+
+# spark.sql("DROP TABLE tableParquet").show()
+# spark.sql("DROP TABLE tableDelta").show()

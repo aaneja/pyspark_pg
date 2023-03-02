@@ -26,6 +26,7 @@ df = spark.createDataFrame([
 # df.show()
 # df.printSchema()
 
-# df.write.format('parquet').saveAsTable('tableParquet')
+df.write.format('parquet').saveAsTable('tableParquet')
 df.write.format('delta').saveAsTable('tableDelta')
+spark.sql("SELECT count(*) from tableParquet").show()
 spark.sql("SELECT count(*) from tableDelta").show()
