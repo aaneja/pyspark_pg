@@ -4,7 +4,7 @@ import pyspark
 from delta import *
 from pyspark.sql import Row
 
-# Create a SparkSessions with support for Delta tables
+# Create a SparkSession with support for Delta tables
 builder = pyspark.sql.SparkSession.builder.appName("MyApp") \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \

@@ -1,5 +1,5 @@
 /.idea/
-/metastore_db/
-/spark-warehouse/
-/derby.log
+**/metastore_db/
+**/spark-warehouse/
+**/derby.log
 /poetry.lock
